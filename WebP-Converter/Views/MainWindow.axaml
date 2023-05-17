@@ -1,0 +1,28 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:WebP_Converter.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="WebP_Converter.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="WebP_Converter">
+
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+	<StackPanel>
+		<StackPanel Orientation="Horizontal" Margin="5" Spacing="10">
+			<Label Content="Directory: " VerticalAlignment="Center"/>
+			<TextBox Width="200" Text="{Binding FolderDirectory}"></TextBox>
+			<Button Content="Pick directory" Command="{Binding OpenDirectory}"/>
+		</StackPanel>
+		<Label Content="{Binding DetectedImagesLabel}"/>
+		<Button Content="Convert to WebP" Command="{Binding Convert}"/>
+	</StackPanel>
+
+</Window>
